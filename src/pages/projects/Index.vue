@@ -17,6 +17,15 @@
         </ul> -->
       </div>
     </div>
+    <div class="page-nav">
+      <!-- <a :href="prevPage">prev</a> -->
+      <!-- <span @click="gridPage(0)">first</span> -->
+      <span v-show="currentPage > 1" @click="gridPage(-1)">prev</span>
+      <span>{{ currentPage }}</span>
+      <span v-show="currentPage < lastPage" @click="gridPage(+1)">next</span>
+      <!-- <span @click="gridPage(0)">last</span> -->
+      <!-- <a :href="prevPage">next</a> -->
+    </div>
   </div>
 </template>
 
@@ -33,14 +42,28 @@ export default {
     return {
       projects: [],
       API_URL: "http://127.0.0.1:8000/api",
+      currentPage: "1",
+      lastPage: "",
     };
   },
   methods: {
     fetchProjects() {
-      axios.get(`${this.API_URL}/projects`).then((res) => {
-        console.log(res.data);
-        this.projects = res.data.results;
-      });
+      axios
+        .get(`${this.API_URL}/projects`, {
+          params: {
+            page: this.currentPage,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.projects = res.data.results.data;
+          this.currentPage = res.data.results.current_page;
+          this.lastPage = res.data.results.last_page;
+        });
+    },
+    gridPage(foo) {
+      this.currentPage += foo;
+      this.fetchProjects();
     },
   },
   created() {
@@ -63,6 +86,13 @@ export default {
     padding: 20px;
     border-radius: 10px;
     min-height: 100px;
+  }
+}
+
+.page-nav {
+  text-align: center;
+  span {
+    padding-inline: 16px;
   }
 }
 </style>
