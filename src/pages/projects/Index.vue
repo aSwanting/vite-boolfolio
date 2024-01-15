@@ -3,7 +3,8 @@
     <h1 class="page-title">Projects</h1>
     <div class="grid-wrapper">
       <div class="project-card" v-for="project in projects" :key="project.id">
-        <h3 class="project-title">{{ project.title }}</h3>
+        <ProjectCardVue :project="project" />
+        <!-- <h3 class="project-title">{{ project.title }}</h3>
         <p class="project-type">{{ project.type.name }}</p>
         <ul class="project-technologies">
           <li
@@ -13,7 +14,7 @@
           >
             {{ technology.name }}
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>
@@ -21,7 +22,13 @@
 
 <script>
 import axios from "axios";
+
+import ProjectCardVue from "../../components/ProjectCard.vue";
+
 export default {
+  components: {
+    ProjectCardVue,
+  },
   data() {
     return {
       projects: [],
@@ -56,20 +63,6 @@ export default {
     padding: 20px;
     border-radius: 10px;
     min-height: 100px;
-
-    .project-title {
-      margin-bottom: 4px;
-    }
-    .project-type {
-      margin-bottom: 18px;
-    }
-
-    .project-technologies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12px;
-    }
   }
 }
 </style>
