@@ -1,8 +1,20 @@
 <template>
-  <div>
-    <h1>Projects</h1>
-    <div v-for="project in projects" :key="project.id">
-      {{ project.title }}
+  <div class="container">
+    <h1 class="page-title">Projects</h1>
+    <div class="grid-wrapper">
+      <div class="project-card" v-for="project in projects" :key="project.id">
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-type">{{ project.type.name }}</p>
+        <ul class="project-technologies">
+          <li
+            class="project-technology"
+            v-for="technology in project.technologies"
+            :key="technology.id"
+          >
+            {{ technology.name }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +31,7 @@ export default {
   methods: {
     fetchProjects() {
       axios.get(`${this.API_URL}/projects`).then((res) => {
+        console.log(res.data);
         this.projects = res.data.results;
       });
     },
@@ -29,4 +42,34 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page-title {
+  margin: 30px;
+  text-align: center;
+}
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  .project-card {
+    border: 1px solid rgb(121, 121, 121);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 100px;
+
+    .project-title {
+      margin-bottom: 4px;
+    }
+    .project-type {
+      margin-bottom: 18px;
+    }
+
+    .project-technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+    }
+  }
+}
+</style>
