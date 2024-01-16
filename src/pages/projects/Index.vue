@@ -4,21 +4,9 @@
     <div class="grid-wrapper">
       <div class="project-card" v-for="project in projects" :key="project.id">
         <ProjectCardVue :project="project" />
-        <!-- <h3 class="project-title">{{ project.title }}</h3>
-        <p class="project-type">{{ project.type.name }}</p>
-        <ul class="project-technologies">
-          <li
-            class="project-technology"
-            v-for="technology in project.technologies"
-            :key="technology.id"
-          >
-            {{ technology.name }}
-          </li>
-        </ul> -->
       </div>
     </div>
     <div class="page-nav">
-      <!-- <a :href="prevPage">prev</a> -->
       <span v-show="currentPage > 1" @click="gridPage('first')">first</span>
       <span v-show="currentPage > 1" @click="gridPage('prev')">prev</span>
       <span>{{ currentPage }}</span>
@@ -28,7 +16,6 @@
       <span v-show="currentPage < lastPage" @click="gridPage('last')"
         >last</span
       >
-      <!-- <a :href="prevPage">next</a> -->
     </div>
   </div>
 </template>
