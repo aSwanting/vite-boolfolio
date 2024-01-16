@@ -19,11 +19,15 @@
     </div>
     <div class="page-nav">
       <!-- <a :href="prevPage">prev</a> -->
-      <!-- <span @click="gridPage(0)">first</span> -->
-      <span v-show="currentPage > 1" @click="gridPage(-1)">prev</span>
+      <span v-show="currentPage > 1" @click="gridPage('first')">first</span>
+      <span v-show="currentPage > 1" @click="gridPage('prev')">prev</span>
       <span>{{ currentPage }}</span>
-      <span v-show="currentPage < lastPage" @click="gridPage(+1)">next</span>
-      <!-- <span @click="gridPage(0)">last</span> -->
+      <span v-show="currentPage < lastPage" @click="gridPage('next')"
+        >next</span
+      >
+      <span v-show="currentPage < lastPage" @click="gridPage('last')"
+        >last</span
+      >
       <!-- <a :href="prevPage">next</a> -->
     </div>
   </div>
@@ -61,8 +65,28 @@ export default {
           this.lastPage = res.data.results.last_page;
         });
     },
-    gridPage(foo) {
-      this.currentPage += foo;
+    gridPage(key) {
+      switch (key) {
+        case "prev":
+          this.currentPage--;
+          break;
+
+        case "next":
+          this.currentPage++;
+          break;
+
+        case "first":
+          this.currentPage = 1;
+          break;
+
+        case "last":
+          this.currentPage = this.lastPage;
+          break;
+
+        default:
+          break;
+      }
+
       this.fetchProjects();
     },
   },
@@ -85,7 +109,7 @@ export default {
     border: 1px solid rgb(121, 121, 121);
     padding: 20px;
     border-radius: 10px;
-    min-height: 100px;
+    min-height: 200px;
   }
 }
 
