@@ -1,22 +1,14 @@
 <template>
   <div class="container">
     <h1 class="page-title">Projects</h1>
+
     <div class="grid-wrapper">
       <div class="project-card" v-for="project in projects" :key="project.id">
         <ProjectCardVue :project="project" />
       </div>
     </div>
-    <div class="page-nav">
-      <span v-show="currentPage > 1" @click="gridPage('first')">first</span>
-      <span v-show="currentPage > 1" @click="gridPage('prev')">prev</span>
-      <span>{{ currentPage }}</span>
-      <span v-show="currentPage < lastPage" @click="gridPage('next')"
-        >next</span
-      >
-      <span v-show="currentPage < lastPage" @click="gridPage('last')"
-        >last</span
-      >
-    </div>
+
+    <PageNavigation @change-page="gridPage" :pageNav="pageNav" />
   </div>
 </template>
 
@@ -24,17 +16,19 @@
 import axios from "axios";
 
 import ProjectCardVue from "../../components/ProjectCard.vue";
+import PageNavigation from "../../components/pageNavigation.vue";
 
 export default {
   components: {
     ProjectCardVue,
+    PageNavigation,
   },
   data() {
     return {
       projects: [],
       API_URL: "http://127.0.0.1:8000/api",
-      currentPage: "1",
-      lastPage: "",
+      pageNav: {},
+      currentPage: 1,
     };
   },
   methods: {
@@ -48,33 +42,21 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.projects = res.data.results.data;
-          this.currentPage = res.data.results.current_page;
-          this.lastPage = res.data.results.last_page;
+          this.pageNav = {
+            current: res.data.results.current_page,
+            last: res.data.results.last_page,
+            from: res.data.results.from,
+            to: res.data.results.to,
+            total: res.data.results.total,
+          };
         });
     },
-    gridPage(key) {
-      switch (key) {
-        case "prev":
-          this.currentPage--;
-          break;
-
-        case "next":
-          this.currentPage++;
-          break;
-
-        case "first":
-          this.currentPage = 1;
-          break;
-
-        case "last":
-          this.currentPage = this.lastPage;
-          break;
-
-        default:
-          break;
+    gridPage(n) {
+      console.log(n);
+      if (n > 0 && n <= this.pageNav.last && n != this.currentPage) {
+        this.currentPage = n;
+        this.fetchProjects();
       }
-
-      this.fetchProjects();
     },
   },
   created() {
@@ -92,18 +74,22 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
   .project-card {
-    border: 1px solid rgb(121, 121, 121);
+    border: 1px solid rgb(200, 200, 200);
     padding: 20px;
     border-radius: 10px;
     min-height: 200px;
   }
 }
 
-.page-nav {
-  text-align: center;
-  span {
-    padding-inline: 16px;
-  }
-}
+// .page-nav {
+//   text-align: center;
+//   span {
+//     padding-inline: 16px;
+//   }
+// }
 </style>
