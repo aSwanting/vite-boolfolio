@@ -1,11 +1,11 @@
 <template>
   <div class="page-nav">
-    <ul>
+    <ul class="nav-list">
       <li>
         Showing {{ pageNav.from }} to {{ pageNav.to }} of
         {{ pageNav.total }} results
       </li>
-      <ul>
+      <ul class="nav-links">
         <li @click="gridPage('first')">first</li>
         <li @click="gridPage('prev')">prev</li>
         <li @click="gridPage('next')">next</li>
@@ -58,6 +58,10 @@ export default {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+  }
+  .nav-links li {
+    cursor: pointer;
+    user-select: none;
   }
 }
 </style>

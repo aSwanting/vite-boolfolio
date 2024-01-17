@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="page-title">Projects</h1>
+    <h1 class="page-title">Portfolio</h1>
 
     <div class="grid-wrapper">
       <div class="project-card" v-for="project in projects" :key="project.id">
