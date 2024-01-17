@@ -3,7 +3,7 @@
     <h1 class="page-title">Portfolio</h1>
 
     <div class="grid-wrapper">
-      <div class="project-card" v-for="project in projects" :key="project.id">
+      <div class="grid-item" v-for="project in projects" :key="project.id">
         <ProjectCardVue :project="project" />
       </div>
     </div>
@@ -78,11 +78,5 @@ export default {
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 16px;
-  .project-card {
-    border: 1px solid rgb(200, 200, 200);
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 200px;
-  }
 }
 </style>
