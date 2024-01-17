@@ -73,10 +73,10 @@ export default {
 .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  border: 1px solid rgb(200, 200, 200);
+  gap: 30px;
+  // border: 1px solid rgb(200, 200, 200);
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 </style>

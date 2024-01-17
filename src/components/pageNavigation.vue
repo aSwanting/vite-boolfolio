@@ -52,9 +52,9 @@ export default {
 
 <style lang="scss" scoped>
 .page-nav {
-  border: 1px solid rgb(180, 180, 180);
+  // border: 1px solid rgb(180, 180, 180);
   border-radius: 8px;
-  padding: 10px;
+  padding: 0px 40px;
   text-align: center;
   .nav-list {
     display: flex;

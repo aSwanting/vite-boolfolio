@@ -44,7 +44,6 @@ export default {
 <style lang="scss" scoped>
 .project-card {
   position: relative;
-  border: 1px solid rgb(200, 200, 200);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
@@ -53,8 +52,8 @@ export default {
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.4);
 
   .card-header {
-    background-color: rgb(245, 250, 255);
-    border-bottom: 1px solid;
+    background-color: rgb(233, 233, 233);
+    border-bottom: 2px solid rgba(119, 128, 136, 0.2);
     justify-content: center;
     padding: 15px 8px 4px 15px;
     height: 120px;
@@ -63,18 +62,18 @@ export default {
     .project-title {
       flex-grow: 1;
       font-size: 22px;
-      color: rgb(37, 82, 67);
+      color: rgb(83, 83, 83);
     }
     .project-type {
       text-transform: uppercase;
       text-align: right;
       font-weight: 800;
       font-size: 14px;
-      color: rgb(149, 167, 182);
+      color: rgb(166, 162, 167);
     }
   }
   .card-body {
-    background-color: rgb(253, 255, 254);
+    background-color: rgb(255, 255, 255);
     padding: 20px 30px 0px 20px;
     overflow: auto;
     flex-grow: 1;
@@ -88,6 +87,7 @@ export default {
         border-radius: 30px;
         color: white;
         box-shadow: 0px 4px 15px -3px rgba(0, 0, 0, 0.4);
+        margin-bottom: 8px;
       }
     }
   }
