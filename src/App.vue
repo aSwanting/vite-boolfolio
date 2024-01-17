@@ -1,5 +1,6 @@
 <template>
-  <ProjectIndex />
+  <!-- <ProjectIndex /> -->
+  <router-view></router-view>
 </template>
 
 <script>

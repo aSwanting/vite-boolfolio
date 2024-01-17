@@ -16,7 +16,7 @@
 import axios from "axios";
 
 import ProjectCardVue from "../../components/ProjectCard.vue";
-import PageNavigation from "../../components/pageNavigation.vue";
+import PageNavigation from "../../components/PageNavigation.vue";
 
 export default {
   components: {
