@@ -1,17 +1,19 @@
 <template>
   <div class="page-nav">
     <ul class="nav-list">
-      <li>
+      <li class="results">
         Showing {{ pageNav.from }} to {{ pageNav.to }} of
         {{ pageNav.total }} results
       </li>
       <ul class="nav-links">
-        <li @click="gridPage('first')">first</li>
-        <li @click="gridPage('prev')">prev</li>
-        <li @click="gridPage('next')">next</li>
-        <li @click="gridPage('last')">last</li>
+        <li @click="gridPage('first')">First</li>
+        <li @click="gridPage('prev')">Prev</li>
+        <li @click="gridPage('next')">Next</li>
+        <li @click="gridPage('last')">Last</li>
       </ul>
-      <li>Current page: {{ pageNav.current }} of {{ pageNav.last }}</li>
+      <li class="pages">
+        Current page: {{ pageNav.current }} of {{ pageNav.last }}
+      </li>
     </ul>
   </div>
 </template>
@@ -54,14 +56,30 @@ export default {
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  ul {
+  .nav-list {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    & > * {
+      flex-basis: 30%;
+    }
+
+    .results {
+      text-align: left;
+    }
+
+    .pages {
+      text-align: right;
+    }
   }
-  .nav-links li {
-    cursor: pointer;
-    user-select: none;
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    li {
+      cursor: pointer;
+      user-select: none;
+    }
   }
 }
 </style>
