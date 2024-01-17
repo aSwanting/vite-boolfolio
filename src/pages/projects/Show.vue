@@ -4,7 +4,7 @@
       <div class="project-info">
         <h1>{{ project.title }}</h1>
         <h2>{{ project.slug }}</h2>
-        <h3>{{ project.type.name }}</h3>
+        <h3>{{ project.type?.name }}</h3>
         <ul>
           <li v-for="tech in project.technologies">{{ tech.name }}</li>
         </ul>

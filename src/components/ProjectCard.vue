@@ -1,9 +1,9 @@
 <template>
   <div class="project-card">
+    <div class="project-index">{{ project.id }}</div>
     <div class="card-header">
       <h3 class="project-title">{{ project.title }}</h3>
       <p class="project-type">{{ project.type.name }}</p>
-      <div class="project-index">{{ project.id }}</div>
     </div>
 
     <div class="card-body">
@@ -48,17 +48,18 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 320px;
+  height: 340px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.4);
 
   .card-header {
-    background-color: rgb(233, 233, 233);
-    border-bottom: 2px solid rgba(119, 128, 136, 0.2);
+    background-color: rgba(212, 230, 255, 0.438);
+    border-bottom: 1px solid rgba(34, 98, 153, 0.2);
     justify-content: center;
     padding: 15px 8px 4px 15px;
     height: 120px;
     display: flex;
     flex-direction: column;
+
     .project-title {
       flex-grow: 1;
       font-size: 22px;
@@ -67,82 +68,73 @@ export default {
     .project-type {
       text-transform: uppercase;
       text-align: right;
-      font-weight: 800;
-      font-size: 14px;
-      color: rgb(166, 162, 167);
+      font-weight: 300;
+      font-size: 18px;
+      color: rgba(25, 28, 36, 0.6);
     }
   }
   .card-body {
-    background-color: rgb(255, 255, 255);
-    padding: 20px 30px 0px 20px;
-    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 15px 20px;
     flex-grow: 1;
     .project-technologies {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       .project-technology {
-        background-color: rgba(36, 104, 92, 0.8);
-        padding: 5px 15px;
-        border-radius: 30px;
+        background-color: rgba(0, 37, 78, 0.39);
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        aspect-ratio: 1;
+        border-radius: 50%;
         color: white;
         box-shadow: 0px 4px 15px -3px rgba(0, 0, 0, 0.4);
-        margin-bottom: 8px;
       }
     }
   }
   .card-footer {
-    color: white;
+    color: rgb(34, 34, 53);
     text-align: center;
     .details {
-      font-weight: 600;
-      font-size: 14px;
-      background-color: rgb(0, 63, 88);
+      background-color: rgba(196, 231, 215, 0.5);
+      font-weight: 300;
+      font-size: 18px;
       display: block;
-      padding: 8px;
+      padding: 12px;
       transition: all 250ms;
       &:hover {
-        background-color: rgb(73, 92, 92);
+        background-color: rgba(92, 179, 140, 0.5);
       }
     }
   }
 
   .project-index {
-    font-size: 60px;
+    color: rgba(59, 59, 59, 0.479);
+    user-select: none;
+    z-index: -1;
+    font-size: 200px;
     font-weight: 900;
     position: absolute;
-    top: 56%;
-    left: 63%;
-    border: 20px solid rgb(80, 95, 95);
+    top: 20%;
+    left: 20%;
+    border: 20px solid;
+    width: 320px;
     aspect-ratio: 1;
     border-radius: 50%;
-    width: 150px;
+    padding: 50px;
     overflow: hidden;
     transform: rotate(-25deg);
-    opacity: 0.1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  .card-header,
+  .card-footer,
+  .project-technology {
+    backdrop-filter: blur(5px);
+  }
 }
-// .project-title {
-//   margin-bottom: 4px;
-// }
-// .project-type {
-//   margin-bottom: 18px;
-// }
-
-// .project-technologies {
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 8px;
-//   font-size: 12px;
-//   margin-bottom: 10px;
-// }
-
-// .details {
-//   font-size: 12px;
-//   color: blue;
-//   text-align: right;
-// }
 </style>
