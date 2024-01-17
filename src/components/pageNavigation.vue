@@ -54,7 +54,7 @@ export default {
 .page-nav {
   // border: 1px solid rgb(180, 180, 180);
   border-radius: 8px;
-  padding: 0px 40px;
+  padding: 30px 40px;
   text-align: center;
   .nav-list {
     display: flex;

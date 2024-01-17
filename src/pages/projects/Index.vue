@@ -1,15 +1,19 @@
 <template>
-  <div class="container">
-    <h1 class="page-title">Portfolio</h1>
-
-    <div class="grid-wrapper">
-      <div class="grid-item" v-for="project in projects" :key="project.id">
-        <ProjectCardVue :project="project" />
+  <section class="index-body">
+    <div class="index-title">
+      <h1 class="page-title">Portfolio</h1>
+    </div>
+    <div class="index-grid">
+      <div class="grid-wrapper">
+        <div class="grid-item" v-for="project in projects" :key="project.id">
+          <ProjectCardVue :project="project" />
+        </div>
       </div>
     </div>
-
-    <PageNavigation @change-page="gridPage" :pageNav="pageNav" />
-  </div>
+    <div class="index-nav">
+      <PageNavigation @change-page="gridPage" :pageNav="pageNav" />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -66,9 +70,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.index-body {
+  display: flex;
+  flex-direction: column;
+  .index-title {
+    margin: 30px;
+    text-align: center;
+  }
+  .index-grid {
+    flex-grow: 1;
+  }
+}
+
 .page-title {
-  margin: 30px;
-  text-align: center;
+  // margin: 30px;
+  // text-align: center;
 }
 .grid-wrapper {
   display: grid;
