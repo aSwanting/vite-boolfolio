@@ -85,11 +85,4 @@ export default {
     min-height: 200px;
   }
 }
-
-// .page-nav {
-//   text-align: center;
-//   span {
-//     padding-inline: 16px;
-//   }
-// }
 </style>
